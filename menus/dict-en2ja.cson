@@ -1,0 +1,16 @@
+# See https://atom.io/docs/latest/creating-a-package#menus for more details
+'context-menu':
+  '.overlayer':
+      'Enable dict-en2ja': 'dict-en2ja:toggle'
+
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'dict-en2ja'
+      'submenu': [
+        { 'label': 'Toggle', 'command': 'dict-en2ja:toggle' }
+      ]
+    ]
+  }
+]

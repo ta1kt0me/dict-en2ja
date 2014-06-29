@@ -19,19 +19,25 @@ module.exports =
   search: ->
     word = atom.workspace.activePaneItem.getSelection().getText()
     self = this
-    $.Deferred(@getItemIdXML(word))
-    .then (content) ->
+    console.log("start")
+    @getItemIdXML(word).then (content) ->
+      console.log(content)
       self.getItemId content
     .then (itemId) ->
       console.log itemId
-      console.log "fugafugahogehoge"
+      self.getMeaningContent itemId
+    .then (content) ->
+      console.log content
+      self.getMeaning content
+    console.log("end")
 
   getItemIdXML: (word) ->
+    console.log("start getItemIdXML")
     defer = new $.Deferred
-    urlParam = "/NetDicV09.asmx/SearchDicItemLite?Dic=EJdict&Word=#{word}&Scope=HEADWORD&Match=EXACT&Merge=AND&Prof=JSON&PageSize=1&PageIndex=0"
+    urlPath = "/NetDicV09.asmx/SearchDicItemLite?Dic=EJdict&Word=#{word}&Scope=HEADWORD&Match=EXACT&Merge=AND&Prof=JSON&PageSize=1&PageIndex=0"
     http.get {
       hostname : 'public.dejizo.jp',
-      path : urlParam
+      path : urlPath
      }, (res) ->
       res.setEncoding('utf8')
       content = ""
@@ -39,12 +45,41 @@ module.exports =
         content += chunk
       res.on 'end', ->
         defer.resolve content
-    defer.promise
+    defer.promise()
 
   getItemId: (content) ->
+    console.log "start getItemId"
+    console.log(content)
     defer = new $.Deferred
     parseString content, (err, result) ->
       itemId = result.SearchDicItemResult.TitleList[0].DicItemTitle[0].ItemID[0]
       console.log(itemId)
       defer.resolve itemId
-    defer.promise
+    defer.promise()
+
+  getMeaningContent: (itemId) ->
+    console.log(itemId)
+    defer = new $.Deferred
+    urlPath = "/NetDicV09.asmx/GetDicItemLite?Dic=EJdict&Item=#{itemId}&Loc=&Prof=XHTML"
+    http.get {
+      hostname : "public.dejizo.jp",
+      path : urlPath
+    }, (res) ->
+      console.log res
+      res.setEncoding('utf8')
+      content = ""
+      res.on 'data', (chunk) ->
+        content += chunk
+      res.on 'end', ->
+        console.log content
+        defer.resolve content
+    defer.promise()
+
+  getMeaning: (content) ->
+    console.log "start meaning"
+    console.log(content)
+    defer = new $.Deferred
+    parseString content, (err, result) ->
+      meaning = result.GetDicItemResult.Body[0].div[0].div[0]
+      defer.resolve meaning
+    defer.promise()

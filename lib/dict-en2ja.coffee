@@ -2,6 +2,7 @@ DictEn2jaView = require './dict-en2ja-view'
 $ = require 'jquery'
 http = require 'http'
 {parseString} = require 'xml2js'
+{EditorView} =require 'atom'
 
 module.exports =
   dictEn2jaView: null
@@ -31,24 +32,11 @@ module.exports =
       self.getMeaning content
     .then (meaning) ->
       console.log meaning
-      # pane = atom.workspace.getActivePane().splitRight()
-      # view = new DictEn2jaView(word: "word")
-      # pane.addItem view
-      # console.log pane.getItems()
-      # console.log pane.getActiveEditor()
-      # console.log pane
-      # view.render()
-      {EditorView} =require 'atom'
-      sMiniEditorView = new EditorView(mini:true)
-      console.dir sMiniEditorView
-      # console.log miniEditorView.getEditor()
-      # miniEditorView = new DictEn2jaView(mini:true)
-      # console.dir miniEditorView
-      # console.dir miniEditorView[0].getEditor()
+      miniEditorView = new EditorView(mini:true)
+      console.dir miniEditorView
+      editor = miniEditorView.getEditor()
+      editor.insertText(meaning)
       pane = atom.workspace.getActivePane().splitRight()
-      # pane.addItem miniEditorView.getEditor()
-      editor = sMiniEditorView.getEditor()
-      editor.insertText('aaaaaa')
       pane.addItem editor
     console.log("end")
 

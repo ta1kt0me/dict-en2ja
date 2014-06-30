@@ -29,6 +29,27 @@ module.exports =
     .then (content) ->
       console.log content
       self.getMeaning content
+    .then (meaning) ->
+      console.log meaning
+      # pane = atom.workspace.getActivePane().splitRight()
+      # view = new DictEn2jaView(word: "word")
+      # pane.addItem view
+      # console.log pane.getItems()
+      # console.log pane.getActiveEditor()
+      # console.log pane
+      # view.render()
+      {EditorView} =require 'atom'
+      sMiniEditorView = new EditorView(mini:true)
+      console.dir sMiniEditorView
+      # console.log miniEditorView.getEditor()
+      # miniEditorView = new DictEn2jaView(mini:true)
+      # console.dir miniEditorView
+      # console.dir miniEditorView[0].getEditor()
+      pane = atom.workspace.getActivePane().splitRight()
+      # pane.addItem miniEditorView.getEditor()
+      editor = sMiniEditorView.getEditor()
+      editor.insertText('aaaaaa')
+      pane.addItem editor
     console.log("end")
 
   getItemIdXML: (word) ->

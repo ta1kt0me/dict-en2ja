@@ -31,12 +31,11 @@ module.exports =
       console.log content
       self.getMeaning content
     .then (meaning) ->
-      console.log meaning
       miniEditorView = new EditorView(mini:true)
       console.dir miniEditorView
       editor = miniEditorView.getEditor()
-      editor.insertText(meaning)
-      pane = atom.workspace.getActivePane().splitRight()
+      editor.insertText(meaning.replace(/\t/g, "\n"))
+      pane = atom.workspace.getActivePane().splitDown()
       pane.addItem editor
     console.log("end")
 

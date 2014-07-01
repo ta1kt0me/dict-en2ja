@@ -9,3 +9,5 @@
 # https://atom.io/docs/latest/advanced/keymaps
 '.workspace':
   'ctrl-alt-o': 'dict-en2ja:toggle'
+'.editor':
+  'ctrl-alt-d': 'dict-en2ja:mean'

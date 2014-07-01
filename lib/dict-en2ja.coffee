@@ -7,7 +7,7 @@ module.exports =
   dictEn2jaView: null
 
   activate: (state) ->
-    atom.workspaceView.command "dict-en2jp:mean", => @mean()
+    atom.workspaceView.command "dict-en2ja:mean", => @mean()
 
   deactivate: ->
     @dictEn2jaView.destroy()
@@ -17,8 +17,8 @@ module.exports =
 
   mean: ->
     wordEn = new WordEn(atom.workspace.activePaneItem.getSelection().getText())
-    wordEn.selectItemId(wordEn.word).then (id) ->
-      wordEn.selectMean(id)
+    wordEn.getItemId(wordEn.word).then (id) ->
+      wordEn.getMean(id)
     .then (mean) ->
       editor = new EditorView(mini:true).getEditor()
       editor.insertText(mean.replace(/\t/g, "\n"))

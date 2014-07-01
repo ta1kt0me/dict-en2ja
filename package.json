@@ -1,10 +1,13 @@
 {
   "name": "dict-en2ja",
   "main": "./lib/dict-en2ja",
-  "version": "0.0.0",
-  "description": "A short description of your package",
+  "version": "1.0.0",
+  "description": "look up a selected English word in Japanese dictionary",
   "activationEvents": ["dict-en2ja:mean"],
-  "repository": "https://github.com/atom/dict-en2ja",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ta1kt0me/dict-en2ja"
+  },
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"

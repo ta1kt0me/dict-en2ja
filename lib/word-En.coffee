@@ -6,7 +6,7 @@ module.exports =
 class WordEn
 
   constructor: (word) ->
-    @word = word
+    @word = escape(word)
 
   selectItemId: (word) ->
     defer = new $.Deferred
@@ -21,6 +21,9 @@ class WordEn
         content += chunk
       res.on 'end', ->
         parseString content, (err, result) ->
+          if result.SearchDicItemResult.TitleList[0] == ""
+            alert('[ ' + unescape(word) + ' ] is not found in a dictionary')
+            return
           itemId = result.SearchDicItemResult.TitleList[0].DicItemTitle[0].ItemID[0]
           defer.resolve itemId
     defer.promise()

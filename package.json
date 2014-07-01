@@ -3,12 +3,14 @@
   "main": "./lib/dict-en2ja",
   "version": "0.0.0",
   "description": "A short description of your package",
-  "activationEvents": ["dict-en2ja:toggle"],
+  "activationEvents": ["dict-en2ja:search"],
   "repository": "https://github.com/atom/dict-en2ja",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
   },
   "dependencies": {
+    "xml2js": "0.4.4",
+    "jquery": "2.1.1"
   }
 }

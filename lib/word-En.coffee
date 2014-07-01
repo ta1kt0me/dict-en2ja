@@ -8,7 +8,7 @@ class WordEn
   constructor: (word) ->
     @word = escape(word)
 
-  selectItemId: (word) ->
+  getItemId: (word) ->
     defer = new $.Deferred
     urlPath = "/NetDicV09.asmx/SearchDicItemLite?Dic=EJdict&Word=#{word}&Scope=HEADWORD&Match=EXACT&Merge=AND&Prof=JSON&PageSize=1&PageIndex=0"
     http.get {
@@ -28,7 +28,7 @@ class WordEn
           defer.resolve itemId
     defer.promise()
 
-  selectMean: (itemId) ->
+  getMean: (itemId) ->
     defer = new $.Deferred
     urlPath = "/NetDicV09.asmx/GetDicItemLite?Dic=EJdict&Item=#{itemId}&Loc=&Prof=XHTML"
     http.get {

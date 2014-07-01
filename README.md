@@ -1,5 +1,20 @@
 # dict-en2ja package
 
-A short description of your package.
+dict-en2ja is Atom plugin to look up a selected English word in a Japanese dictionary.  
+This plugin use [DEJIZO REST API](https://dejizo.jp/dev/rest.html). So use this plugin only when the Internet leads.
 
-![A screenshot of your spankin' package](https://f.cloud.github.com/assets/69169/2290250/c35d867a-a017-11e3-86be-cd7c5bf3ff9b.gif)
+## command palette
+
+1. select a word (only one word)
+1. open command palette
+1. enter `mean`
+1. select `dict-en2ja:Mean`
+
+## keyboard shortcut
+
+1. select a word (only one word)
+1. press ctrl-alt-d
+
+
+
+![A screenshot of your spankin' package](http://i.gyazo.com/86a61d659312707b338dcf7658056a70.gif)

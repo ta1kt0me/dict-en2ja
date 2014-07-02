@@ -1,7 +1,7 @@
 {
   "name": "dict-en2ja",
   "main": "./lib/dict-en2ja",
-  "version": "2.0.1",
+  "version": "2.0.0",
   "description": "look up a selected English word in Japanese dictionary",
   "activationEvents": [
     "dict-en2ja:mean"

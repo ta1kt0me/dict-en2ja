@@ -17,9 +17,7 @@ module.exports =
 
   mean: ->
     wordEn = new WordEn(atom.workspace.activePaneItem.getSelection().getText())
-    wordEn.getItemId(wordEn.word).then (id) ->
-      wordEn.getMean(id)
-    .then (mean) ->
+    wordEn.getItemMean().then (mean) ->
       editor = new EditorView(mini:true).getEditor()
       editor.insertText(mean.replace(/\t/g, "\n"))
       atom.workspace.getActivePane().splitDown().addItem editor

@@ -18,7 +18,7 @@ class WordEn
     http.get {
       hostname : 'public.dejizo.jp',
       path : urlPath
-     }, (res) ->
+    }, (res) ->
       res.setEncoding('utf8')
       content = ""
       res.on 'data', (chunk) ->

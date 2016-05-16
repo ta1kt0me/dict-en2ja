@@ -7,7 +7,7 @@ module.exports =
   dictEn2jaView: null
 
   activate: (state) ->
-    atom.commands.add 'atom-workspace', 'dict-en2ja:mean', => @mean()
+    atom.commands.add 'atom-text-editor', 'dict-en2ja:mean', => @mean()
 
   deactivate: ->
     @dictEn2jaView.destroy()

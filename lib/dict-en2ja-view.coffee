@@ -7,7 +7,7 @@ class DictEn2jaView extends View
       @div "The DictEn2ja package is Alive! It's ALIVE!", class: "message"
 
   initialize: (serializeState) ->
-    atom.workspaceView.command "dict-en2ja:toggle", => @toggle()
+    atom.commands 'atom-text-editor', "dict-en2ja:toggle", => @toggle()
 
   # Tear down any state and detach
   destroy: ->

@@ -3,16 +3,16 @@
   "main": "./lib/dict-en2ja",
   "version": "2.0.1",
   "description": "look up a selected English word in Japanese dictionary",
-  "activationEvents": [
-    "dict-en2ja:mean"
-  ],
+  "activationCommands": {
+    "atom-text-editor": ["dict-en2ja:mean"]
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/ta1kt0me/dict-en2ja"
   },
   "license": "MIT",
   "engines": {
-    "atom": ">0.50.0"
+    "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
     "atom-space-pen-views": "^2.0.3",

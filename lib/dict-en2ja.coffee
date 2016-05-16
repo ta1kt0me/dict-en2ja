@@ -13,7 +13,7 @@ module.exports =
     @dictEn2jaView.destroy()
 
   mean: ->
-    wordEn = new WordEn(atom.workspace.getActivePaneItem().getSelections()[0].getText())
+    wordEn = new WordEn(atom.workspace.getActivePaneItem().getSelectedText())
     wordEn.getItemMean().then (mean) ->
       editor = new TextEditorView(mini:true).getModel()
       editor.insertText(mean.replace(/\t/g, "\n"))

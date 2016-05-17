@@ -1,10 +1,15 @@
 WordEn = require './word-En'
 {TextEditorView} =require 'atom-space-pen-views'
+{CompositeDisposable} =require 'atom'
 
 module.exports =
+  subscriptions: null
 
   activate: (state) ->
-    atom.commands.add 'atom-text-editor', 'dict-en2ja:mean', => @mean()
+    @subscriptions = new CompositeDisposable()
+    @subscriptions.add atom.commands.add('atom-workspace', 'dict-en2ja:mean': =>
+      @mean()
+    )
 
   deactivate: ->
 

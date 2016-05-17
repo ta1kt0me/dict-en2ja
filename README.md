@@ -13,7 +13,7 @@ This plugin use [DEJIZO REST API](https://dejizo.jp/dev/rest.html). So use this 
 ## keyboard shortcut
 
 1. select a word (only one word)
-1. press ctrl-alt-d
+1. press ctrl-alt-w
 
 
 

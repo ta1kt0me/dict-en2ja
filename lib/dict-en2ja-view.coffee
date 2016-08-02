@@ -6,7 +6,7 @@ class DictEn2jaView extends ScrollView
       @h1 class: 'dict-en2ja__word'
       @p class: 'dict-en2ja__meanings'
 
-  constructor: (word) ->
+  constructor: ->
     super
     @elemWord = @find('.dict-en2ja__word')
     @elemMeanings = @find('.dict-en2ja__meanings')

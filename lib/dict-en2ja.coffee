@@ -1,6 +1,7 @@
 WordEn = require './word-En'
-{TextEditorView} =require 'atom-space-pen-views'
-{CompositeDisposable} =require 'atom'
+DictEn2jaView = require './dict-en2ja-view'
+{CompositeDisposable} = require 'atom'
+url = require 'url'
 
 module.exports =
   subscriptions: null
@@ -11,6 +12,11 @@ module.exports =
       @mean()
     )
 
+    atom.workspace.addOpener (uriToOpen) ->
+      { protocol, pathname } = url.parse(uriToOpen)
+      return unless protocol is 'dict-en2ja:'
+      new DictEn2jaView()
+
   deactivate: ->
 
   mean: ->
@@ -19,6 +25,8 @@ module.exports =
     word = editor.getWordUnderCursor() if word is ''
     wordEn = new WordEn(word)
     wordEn.getItemMean().then (mean) ->
-      editor = new TextEditorView(mini:true).getModel()
-      editor.insertText(mean.replace(/\t/g, "\n"))
-      atom.workspace.getActivePane().splitDown().addItem editor
+      uri = "dict-en2ja://#{wordEn}"
+      atom.workspace.open(uri, split: 'down', activatePane: false)
+      .done (dictEn2jaView) ->
+        if dictEn2jaView instanceof DictEn2jaView
+          dictEn2jaView.outputMeanings(wordEn.word, mean)

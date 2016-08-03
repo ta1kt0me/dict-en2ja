@@ -14,7 +14,10 @@ module.exports =
   deactivate: ->
 
   mean: ->
-    wordEn = new WordEn(atom.workspace.getActivePaneItem().getSelectedText())
+    editor = atom.workspace.getActivePaneItem()
+    word = editor.getSelectedText()
+    word = editor.getWordUnderCursor() if word is ''
+    wordEn = new WordEn(word)
     wordEn.getItemMean().then (mean) ->
       editor = new TextEditorView(mini:true).getModel()
       editor.insertText(mean.replace(/\t/g, "\n"))

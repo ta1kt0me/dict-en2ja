@@ -2,6 +2,7 @@ WordEn = require './word-En'
 DictEn2jaView = require './dict-en2ja-view'
 {CompositeDisposable} = require 'atom'
 url = require 'url'
+pluralize = require 'pluralize'
 
 module.exports =
   subscriptions: null
@@ -23,7 +24,7 @@ module.exports =
     editor = atom.workspace.getActivePaneItem()
     word = editor.getSelectedText()
     word = editor.getWordUnderCursor() if word is ''
-    wordEn = new WordEn(word)
+    wordEn = new WordEn(pluralize.singular(word))
     wordEn.getItemMean().then (mean) ->
       uri = "dict-en2ja://#{wordEn}"
       atom.workspace.open(uri, split: 'down', activatePane: false)

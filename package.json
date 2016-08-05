@@ -16,7 +16,8 @@
   },
   "dependencies": {
     "atom-space-pen-views": "^2.0.3",
-    "xml2js": "0.4.4",
-    "jquery": "2.1.1"
+    "jquery": "2.1.1",
+    "pluralize": "^3.0.0",
+    "xml2js": "0.4.4"
   }
 }

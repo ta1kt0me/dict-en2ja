@@ -1,7 +1,7 @@
 {
   "name": "dict-en2ja",
   "main": "./lib/dict-en2ja",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "description": "look up a selected English word in Japanese dictionary",
   "activationCommands": {
     "atom-workspace": "dict-en2ja:mean"
